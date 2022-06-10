@@ -144,8 +144,8 @@ function criarProdutos (produto) {
   button.classList.add("comprarProduto")
   button.innerText = "Comprar"
   button.id = produto.id
-  button.addEventListener("click", (event)=>{
-    addCart(produto, event)
+  button.addEventListener("click", ()=>{
+    addCart(produto);
   })
 
   imagem.src = produto.img;
@@ -342,7 +342,46 @@ function emptyCart(){
 
 
 function space(item){
-  return carrinhoVazio.insertAdjacentHTML("beforeend",
+  const produtoPequeno = document.createElement("div")
+  const imgPrinc = document.createElement("img")
+  const descricao = document.createElement("div")
+  const nome = document.createElement("h3")
+  const secao = document.createElement("h3")
+  const price = document.createElement("h3")
+  const strong = document.createElement("strong")
+  const botaoRemover = document.createElement("div")
+  const button = document.createElement("button")
+  const imgRemover = document.createElement("img")
+  
+  produtoPequeno.classList.add("produtoPequeno")
+  imgPrinc.classList.add("imgPrinc")
+  descricao.classList.add("descricaoProdutoPequeno")
+  nome.classList.add("nameProduct")
+  secao.classList.add("secaoProduct")
+  price.classList.add("price")
+  botaoRemover.classList.add("botaoRemover")
+  button.classList.add("remove")
+  imgRemover.classList.add("remove")
+  
+  imgPrinc.src = item.img
+  imgRemover.src = "./src/img/icons8-waste-16.png"
+  
+  nome.innerText = item.nome
+  secao.innerText = item.secao
+  price.innerText = item.preco
+
+  price.append(strong)
+  descricao.append(nome, secao, price)
+  botaoRemover.append(button)
+  button.append(imgRemover)
+  produtoPequeno.append(imgPrinc,descricao, botaoRemover)
+  carrinhoVazio.appendChild(produtoPequeno)
+
+  button.addEventListener("click", ()=>{
+    removerProduto(item)
+  })
+
+  /*return carrinhoVazio.insertAdjacentHTML("beforeend",
   `
   <div class="produtoPequeno">
   <img class="imgPrinc" src=${item.img}>
@@ -350,11 +389,13 @@ function space(item){
         <h3 class="nameProduct">${item.nome}</h3>
         <h3 class="secaoProduct">${item.secao}</h3>
         <h3 class="price"><strong>R$${item.preco}.00</strong></h3>
-      </div class="botaoRemover">
+      </div>
+      <div class="botaoRemover">
       <button class="remove" id="produto"><img class="remove" src="./src/img/icons8-waste-16.png" alt="Lixeira"></button>
       </div>
-  `
-)}
+  `*/
+  
+}
 
 function quantSoma(){
   return caixaCarrinho.insertAdjacentHTML("beforeend",
@@ -378,13 +419,11 @@ let quantProduto = 0
 let car = []
 
 
-
 function addCart(produto){
-  const clique = event.target
   car.push(produto)
-      if(clique.parentElement.parentElement.className === "comprarProduto"){
-        carrinhoVazio.innerHTML = ""
-        car.map((produto)=>space(produto))
+  carrinhoVazio.innerHTML = ""
+  car.map((produto)=>space(produto))
+     // if(clique.parentElement.parentElement.className === "comprarProduto"){
 
         quantProduto+=produto
         let quant = document.querySelector(".quant")
@@ -396,22 +435,29 @@ function addCart(produto){
         total.innerText = `R$${soma}.00`
         span.append(total)
 
-      }
-      else if(clique.className==="remove"){
+      //}
+      /*else if(clique.className==="remove"){
         car.splice(caixaCarrinho, 1)
         carrinhoVazio.innerHTML = ""
         car.map(space)
 
-        quantProduto-=produto
+      /* quantProduto-=produto
       let quant = document.querySelector(".quant")
       quant.innerText = car.length
 
       soma-=produto.preco
       let total = document.querySelector(".totalValor")
       total.innerText = `R$${soma}.00`
-      span.append(total)
+      span.append(total)*/
       }
 
+
+function removerProduto(item){
+  if(item.className==="remove"){
+    car.splice(caixaCarrinho, 1)
+    carrinhoVazio.innerHTML = ""
+    car.map(space)
+}
 }
 
 /*addEventListener("click", (event)=>{
