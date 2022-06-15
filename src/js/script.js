@@ -145,8 +145,8 @@ function criarProdutos (produto) {
   button.innerText = "Comprar"
   button.id = produto.id
   button.addEventListener("click", ()=>{
-    addCart(produto);
-  })
+     addCart(produto)
+})
 
   imagem.src = produto.img;
   h3.innerText = produto.nome;
@@ -164,7 +164,7 @@ function listarProdutos(listaProdutos){
       ul.append(produtoCard)
  }
 }
-listarProdutos(data)
+//listarProdutos(data)
 
 //FILTROS DOS PRODUTOS
 
@@ -290,7 +290,7 @@ valorTotal()*/
   }
 })*/
 
-function montarDados(listaProdutos) {
+function montarDados(listaProdutos){
   const listaCards = document.querySelector(".lista");
   listaCards.innerHTML = "";
       listarProdutos(listaProdutos)
@@ -341,7 +341,7 @@ function emptyCart(){
 
 
 
-function space(item){
+function cardCarrinho(item){
   const produtoPequeno = document.createElement("div")
   const imgPrinc = document.createElement("img")
   const descricao = document.createElement("div")
@@ -362,9 +362,10 @@ function space(item){
   botaoRemover.classList.add("botaoRemover")
   button.classList.add("remove")
   imgRemover.classList.add("remove")
+  button.innerText = "remover"
   
   imgPrinc.src = item.img
-  imgRemover.src = "./src/img/icons8-waste-16.png"
+  //imgRemover.src = "./src/img/icons8-waste-16.png"
   
   nome.innerText = item.nome
   secao.innerText = item.secao
@@ -422,7 +423,7 @@ let car = []
 function addCart(produto){
   car.push(produto)
   carrinhoVazio.innerHTML = ""
-  car.map((produto)=>space(produto))
+  car.map((produto)=>cardCarrinho(produto))
      // if(clique.parentElement.parentElement.className === "comprarProduto"){
 
         quantProduto+=produto
@@ -453,10 +454,12 @@ function addCart(produto){
 
 
 function removerProduto(item){
-  if(item.className==="remove"){
+   if(item.className==="remove"){
+    const produtoEncontrado = car.find((produto)=>produto === item)
+    console.log(produtoEncontrado)
     car.splice(caixaCarrinho, 1)
     carrinhoVazio.innerHTML = ""
-    car.map(space)
+    car.map(cardCarrinho)
 }
 }
 
