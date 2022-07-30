@@ -86,7 +86,7 @@ main{
     align-items: center;
     height: 52px;
     margin-left: 950px;
-    margin-top: -88px;
+    margin-top: -100px;
 }
 
 .campoBuscaPorNome {
@@ -130,8 +130,7 @@ main{
 /* CONTEÚDO */
 
 .containerListaProdutos {
-    width: 80%;
-    max-width: 80%;
+    width: 100%;
 }
 
 .containerListaProdutos ul {
@@ -139,17 +138,8 @@ main{
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    margin-left: 50px;
-}
-
-.containerListaProdutos ul li ol{
-    color: black;
-    font-weight: bold;
-    padding: 15px 10px;
-    border-radius: 5px;
-    transition: ease-in-out .1s;;
-    width: 280px;
-    height: 325px;
+    margin-left: 70px;
+    margin-bottom: 30px;
 }
 
 .containerListaProdutos .product:hover {
@@ -158,44 +148,25 @@ main{
 }
 
 .containerListaProdutos ul li img {
-    display: flex;
-    width: 250px;
-    height: 150px;
-    margin-top: 15px;
-    margin-left: 15px;
+    width: 275px;
+    height: 175px;
+    padding: 10px;
 }
 
 .containerListaProdutos ul li h3{
-    display: flex;
     align-items: flex-start;
     font-weight:200;
-    margin-top: 7px;
     padding: 5px 15px;
     color: #212529;
 }
 .containerListaProdutos, ul li span{
-    align-items: flex-start;
-    font-weight: 100;
-    margin-top: 7px;
     color: #868E96;
     margin-left: 15px;
 }
-
-.listaComponentes{
-    display: list-item;
-    font-size: smaller;
-    font-weight: 100;
-    color: #868E96;
-    list-style-type: decimal;
-    margin-left: 20px;
-    margin-top: 5px;
-}
-
 .containerListaProdutos ul li p{
     display: flex;
     align-items: flex-start;
     font-weight: 500;
-    margin-top: -225px;
     padding: 5px 15px;
     color: #212529;
     margin-bottom: 15px;
@@ -244,223 +215,3 @@ main{
     box-shadow: 3px 3px 13px 1px rgb(146 146 146);
 }
 
-/*.total{
-    display: flex;
-    height: 35px;
-    background-color: black;
-    color: #f1f3f5;
-    padding: 6px;
-    margin: 10px;
-    margin-top: -10px;
-    border-radius: 8px;
-}*/
-.carrinhoVazio{
-    display: flex;
-    width: 275px;
-    height: 214px; 
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f5f5f5;
-    color: #868E96;
-    font-weight: 100;
-    font-size: 10px;
-    overflow: auto;
-    padding: 15px 0 0 0;
-}
-.carrinhoVazio{
-    max-height: 1000px;
-}
-.tituloCarrinho{
-    display: flex;
-    background-color: #12B886;
-    color: #ffff;
-    width: 275px;
-    height: 40px;
-    margin-top: 30px;
-    margin-right: 40px;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    border-radius: 8px 8px 0 0;
-}
-.bolsaCompras{
-    display: flex;
-    size-adjust: 5px;
-    justify-content: center;
-}
-
-.imgPrinc{
-    width: 80px;
-    height: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    border-radius: 8px;
-    margin-left: 5px;
-}
-
-.produtoPequeno{
-    display: flex;
-    flex-wrap: wrap;
-    width: 260px;
-    max-height: 90px;
-    justify-content: space-between;
-    margin-bottom: 20px;
-
-}
-.produtoPequeno:hover{
-    box-shadow: 2px 2px 4px 1px rgb(146 146 146);
-    border-radius: 8px;
-    padding: 7px;
-}
-
-.nameProduct, .secaoProduct, .price{
-    display:flex;
-    justify-content: space-evenly;
-    margin-bottom: 5px;
-}
-
-.remove{
-    display: flex;
-    border: none;
-    height: 20px;
-    background-color:#f5f5f5;
-}
-
-.quantidade{
-    display: flex;
-    width: 275px;
-    padding: 10px;
-    height: 50px;
-    background-color: #f5f5f5;
-    font-weight: 200;
-    justify-content: space-between;
-}
-
-.total{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 200;
-    width: 275px;
-    padding: 10px;
-    height: 50px;
-    background-color: #f5f5f5;
-}
-
-@media screen and (min-width: 320px) and (max-width:480px){
-    nav{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 480px;
-        height: 45px;
-    }
-    .filtersContainer{
-        display: flex;
-        max-width: 320px;
-        margin-top: 50px;
-        overflow: auto;
-        justify-content: space-between;
-    }
-    .estiloGeralBotoes{
-        display: inline-block;
-        flex-wrap: wrap;
-        height: 40px;
-        margin-left: 5px;
-    }
-    .estiloGeralBotoes--mostrarTodos{
-        display: block;
-        align-items: center;
-        justify-content: center;
-        padding-top: 5px;
-        margin-left: -20px;
-    }
-
-    .containerBuscaPorNome{
-        display: flex;
-        justify-content: center;
-        max-width: 480px;
-        margin-top: -42px;
-        margin-left: 8px;
-    }
-    .campoBuscaPorNome{
-        display: flex;
-        align-items: center;
-    }
-    .containerListaProdutos ul{
-        display: flex;
-        flex-wrap: nowrap;
-        overflow: auto;
-        height: 190px;
-        width: 480px;
-        margin-left: 0px;
-        margin-top: -10px;
-    }
-    .containerListaProdutos ul li img{
-        height: 115px;
-        width: 190px;
-        padding: 10px;
-        margin-top: 5px;
-    }
-    .containerListaProdutos ul li ol{
-        margin-left: -500px;
-        height: 250px;
-    }
-    .containerListaProdutos ul li h3{
-        display: flex;
-        margin-top: -10px;
-        margin-left: 10px;
-    }
-    .containerListaProdutos ul li span{
-        display: flex;
-        margin-left: 25px;
-        margin-top: -2px;
-    }
-    .containerListaProdutos ul li p{
-        display: flex;
-        margin-top: -282px;
-        margin-left: 10px;
-        margin-top: -250px;
-    }
-    
-    .comprarProduto{
-        display: flex;
-        margin-left: auto;
-        margin-right: 10px;
-    }
-    .listaComponentes{
-        display: none;
-    }
-
-    .tituloCarrinho{
-        display: flex;
-        margin-left: -263px;
-        margin-bottom: -190px;
-        margin-top: 207px;
-        width: 300px;
-    }
-    .carrinhoVazio{
-        display: flex;
-        height: 100px;
-        width: 300px;
-        margin-left: -263px;
-        margin-bottom: -120px;
-        margin-top: 190px;
-    }
-    .quantidade{
-        display: flex;
-        width: 300px;
-        height: 20px;
-        margin-left: -263px;
-        margin-top: 110px;
-        margin-bottom: -120px;
-    }
-    .total{
-        display: flex;
-        width: 300px;
-        height: 30px;
-        margin-left: -263px;
-        margin-top: 120px;
-    }
-}
