@@ -391,7 +391,7 @@ function renderizaCarrinho(){
   carrinhoVazio.innerHTML = ""
   car.map((item)=> cardCarrinho(item))
      // if(clique.parentElement.parentElement.className === "comprarProduto"){
-        /*quantProduto+=produto
+        quantProduto+=produto
         let quant = document.querySelector(".quant")
         quant.innerText = car.length
 
@@ -399,7 +399,7 @@ function renderizaCarrinho(){
         soma+=produto.preco
         let total = document.querySelector(".totalValor")
         total.innerText = `R$${soma}.00`
-        span.appendChild(total)*/
+        span.appendChild(total)
 }
 
 /*function removerProduto(item){
