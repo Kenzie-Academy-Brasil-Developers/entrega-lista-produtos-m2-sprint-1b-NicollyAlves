@@ -384,10 +384,10 @@ let quantProduto = 0
 const car = []
 function addCart(produto){
   car.push(produto)
-  renderizaCarrinho()
+  renderizaCarrinho(produto)
 }
 
-function renderizaCarrinho(){
+function renderizaCarrinho(produto){
   carrinhoVazio.innerHTML = ""
   car.map((item)=> cardCarrinho(item))
      // if(clique.parentElement.parentElement.className === "comprarProduto"){
