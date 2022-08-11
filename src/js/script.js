@@ -70,31 +70,6 @@ function pesquisa(){
 }
 pesquisa()
 
-
-//FUNÇÃO DA CAIXA DE PREÇO TOTAL
-/*function caixaPreco(){
-  const div = document.createElement('div')
-  div.classList.add("caixaPreco")
-
-  const descricao = document.createElement('p')
-  const total = document.createElement('p')
-  const span = document.createElement('span')
-
-  descricao.classList.add("pDescricao")
-  total.classList.add("total")
-  span.classList.add("precoTotal")
-
-  descricao.innerText = "Valor total dos produtos da sessão selecionada"
-  total.innerText = "R$"
-  span.innerText = "00.00"
-  
-  header.append(div)
-  div.append(descricao, total)
-  total.appendChild(span)
-  return div
-}
-caixaPreco()*/
-
 //CARRINHO CAIXA
 const caixaCarrinho = document.querySelector("section")
 function criarCarrinho(){
@@ -139,10 +114,11 @@ function criarProdutos (produto) {
   button.classList.add("comprarProduto")
   button.innerText = "Comprar"
   button.id = produto.id
-  button.addEventListener("click", () => {
-     addCart(produto)
-  })
 
+  button.addEventListener("click", (produto) => {
+    console.log("Olá");
+    quantiSoma(produto)
+  })
   li.classList.add("product")
   imagem.classList.add("imagem")
   h3.classList.add("nomeProduto")
@@ -154,6 +130,7 @@ function criarProdutos (produto) {
   span.innerText = produto.secao;
   preco.innerText = `R$ ${produto.preco}.00`;
   
+
   li.append(imagem, h3, span, ol, preco, button)
   return li
 }
@@ -175,13 +152,6 @@ function listarHortifruit(listaProdutos){
       const produtoCard = criarProdutos(hortifruitFiltrados[i])
       ul.appendChild(produtoCard)
     }
-    /* let somaHortifruit = 0
-      for(let i = 0; i<hortifruitFiltrados.length; i++){
-      somaHortifruit+=hortifruitFiltrados[i].preco
-      let total = document.querySelector(".total")
-      total.innerText = `R$${somaHortifruit}.00`
-      div.append(total)
-      }*/
 }
 function listarPanificadora(listaProdutos){
   const panificadoraFiltrados = filtrarPorPanificadora(listaProdutos, 'Panificadora')
@@ -189,13 +159,6 @@ function listarPanificadora(listaProdutos){
       const produtoCard = criarProdutos(panificadoraFiltrados[i])
       ul.appendChild(produtoCard)
  }
-  /*let somaPanificadora = 0
-    for(let i = 0; i<panificadoraFiltrados.length; i++){
-    somaPanificadora+=panificadoraFiltrados[i].preco
-    let total = document.querySelector(".total")
-    total.innerText = `R$${somaPanificadora}`
-    div.append(total)
- }*/
 }
 function listarLaticinios(listaProdutos){
   const laticiniosFiltrados = filtrarPorLaticinios(listaProdutos, 'Laticínio')
@@ -203,13 +166,6 @@ function listarLaticinios(listaProdutos){
       const produtoCard = criarProdutos(laticiniosFiltrados[i])
       ul.appendChild(produtoCard)
  }
-  /*let somaLaticinios = 0
-  for(let i = 0; i<laticiniosFiltrados.length; i++){
-  somaLaticinios+=laticiniosFiltrados[i].preco
-  let total = document.querySelector(".total")
-  total.innerText = `R$${somaLaticinios}`
-  div.append(total)
-}*/
 }
 
 function filtrarPorObjeto(listaProdutos, objeto){
@@ -262,19 +218,6 @@ buttonDiv.addEventListener("click", event =>{
   }
 })
 
-/*let div = document.querySelector(".caixaPreco")
-function valorTotal(){
-let soma = 0
-  for(let i = 0; i<data.length; i++){
-    let total = document.querySelector(".total")
-    soma+=data[i].preco
-    totala.innerText = soma
-    totalFinal = `R$ ${totala}`
-    div.append(totalFinal)
-    }
-  } 
-valorTotal()*/
-
 //FILTRO DE PESQUISA
 function montarDados(listaProdutos){
   const listaCards = document.querySelector(".lista");
@@ -309,7 +252,7 @@ function filtrarCards(event){
 }
 //ADICIONAR E REMOVER DO CARRINHO
 const carrinhoVazio = document.querySelector(".carrinhoVazio")
-carrinhoVazio.addEventListener("click", addCart)
+
 function emptyCart(){
   return carrinhoVazio.insertAdjacentHTML("beforeend",
   `
@@ -353,13 +296,6 @@ function cardCarrinho(item){
   descricao.append(nome, secao, price)
   produtoPequeno.append(imgPrinc,descricao, button)
   carrinhoVazio.appendChild(produtoPequeno)
-
-  button.addEventListener("click", () => {
-    const id = data.indexOf(item)
-    data.splice(id, 1)
-
-    addCart(item)
-})
 }
 function quantSoma(){
   return caixaCarrinho.insertAdjacentHTML("beforeend",
@@ -370,55 +306,67 @@ function quantSoma(){
   </div>
   <div class="total">
      <h2>Total</h2>
-     <span class="totalValor">00.00</span>
+     <span class="totalValor">0</span>
   </div>
   `
 )}
 quantSoma()
 
-let span = document.querySelector(".totalValor")
 let spanDois = document.querySelector(".quant")
-let soma = 0
+let button = document.querySelector(".remove")
+let span = document.querySelector(".totalValor")
 let quantProduto = 0
+let precoProduto = 0
+
 
 const car = []
-function addCart(produto){
-  car.push(produto)
-  renderizaCarrinho(produto)
-}
-
-function renderizaCarrinho(produto){
+addEventListener("click", event => {
+  //let preco = document.querySelector(".preco")
+  const clique = event.target
   carrinhoVazio.innerHTML = ""
-  car.map((item)=> cardCarrinho(item))
-     // if(clique.parentElement.parentElement.className === "comprarProduto"){
-        quantProduto+=produto
-        let quant = document.querySelector(".quant")
-        quant.innerText = car.length
+  if(clique.className === "comprarProduto"){
+    car.push(data[clique.id -1])
+    console.log(car);
+    car.map((item)=> cardCarrinho(item))
+    quantiSoma(data)
+    preco(data)
+    /*soma+=preco
+    let total = document.querySelector(".totalValor")
+    total.innerHTML = `R$${soma}.00`*/
+  }
+  
+  if(clique.className ==="remove"){
+    car.splice(data[clique.id], 1)
+    carrinhoVazio.innerHTML = ""
+    console.log(car);
+    car.map(cardCarrinho)
+    
+    quantiSub(data)
+  }
+})
 
+function quantiSoma(item){
+  //quantProduto+=item
+  let quant = document.querySelector(".quant")
+  quant.innerText = car.length
 
-        soma+=produto.preco
-        let total = document.querySelector(".totalValor")
-        total.innerText = `R$${soma}.00`
-        span.appendChild(total)
+}
+function preco(){
+  for(let i = 0; i < car.length; i++){
+    let total = document.querySelector(".totalValor")
+
+    precoProduto+=car[i].preco
+    const soma = precoProduto
+    total.innerText = soma
+  }
 }
 
-/*function removerProduto(item){
-    carrinhoVazio.innerHTML = ""
-    const produtoEncontrado = car.find((produto) => produto.id === item.id)
-   car.splice(produtoEncontrado, 1)
-   renderizaCarrinho()
-   console.log(car);
-  }*/
-/*function removerProduto(item){
-  if(item.className==="remove"){
-    carrinhoVazio.innerHTML = ""
-    const produtoEncontrado = car.find((produto)=>produto === item)
-   car.splice(produtoEncontrado, 1)
-}
-}*/
+function quantiSub(item){
+  quantProduto-=item
+  let quant = document.querySelector(".quant")
+  quant.innerText = car.length
+  
+  //span.appendChild(total)
 
-/*const removerProduto = (product) =>{
-  const index = car.indexOf(product)
-  car = car.filter((el, i) => i !== index)
-  cardCarrinho(product)
-}*/
+  return
+}
