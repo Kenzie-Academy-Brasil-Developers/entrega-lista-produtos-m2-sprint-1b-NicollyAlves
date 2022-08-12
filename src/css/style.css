@@ -15,6 +15,11 @@ nav{
     font-weight: bold;
 
 }
+
+main{
+    display: flex;
+}
+
 .tituloPrincipal{
     display: flex;
     margin: 0 auto;
@@ -24,14 +29,15 @@ nav{
     
 }
 
-
 .filtersContainer {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     padding: 30px;
     margin-top: 65px;
-    justify-content: space-evenly;
+    margin-bottom: 40px;
     height: 52px;
+    max-width: 70%;
 }
 
 .estiloGeralBotoes{
@@ -78,8 +84,9 @@ nav{
 .containerBuscaPorNome {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 52px;
+    margin-left: 950px;
+    margin-top: -100px;
 }
 
 .campoBuscaPorNome {
@@ -124,90 +131,292 @@ nav{
 
 .containerListaProdutos {
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
 }
 
 .containerListaProdutos ul {
     list-style: none;
-    text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    margin-left: 70px;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
-.containerListaProdutos ul li {
-    color: black;
-    font-weight: bold;
-    padding: 20px 10px;
-    margin: 10px;
-    border-radius: 5px;
-    transition: ease-in-out .1s;;
-    width: 280px;
-    height: 325px;
-}
-
-.containerListaProdutos ul li:hover {
+.containerListaProdutos .product:hover {
     box-shadow: 3px 3px 13px 1px rgb(146 146 146);
+    border-radius: 8px;
 }
 
 .containerListaProdutos ul li img {
-    width: 250px;
-    height: 150px;
-    
+    width: 275px;
+    height: 175px;
+    padding: 10px;
 }
 
-.containerListaProdutos ul li h3 {
-    display: flex;
+.containerListaProdutos ul li h3{
     align-items: flex-start;
     font-weight:200;
-    margin-top: 10px;
-    padding: 10px;
+    padding: 5px 15px;
     color: #212529;
+    margin-bottom: 3px;
 }
-.containerListaProdutos ul li span {
-    display: flex;
-    align-items: flex-start;
+.containerListaProdutos, ul li span{
+    color: #50585f;
+    margin-left: 15px;
+    padding-bottom: 20px;
+}
+.listaComponentes{
+    display: list-item;
+    font-size: smaller;
     font-weight: 100;
-    margin-top: 10px;
-    padding: 10px;
     color: #868E96;
+    list-style-type: decimal;
+    margin-left: 30px;
+    margin-top: 5px;
 }
-.containerListaProdutos ul li p {
+
+.containerListaProdutos ul li p{
     display: flex;
     align-items: flex-start;
     font-weight: 500;
-    margin-top: 10px;
-    padding: 10px;
+    padding: 5px 15px;
     color: #212529;
+    margin-bottom: 15px;
+    margin-top: 8px;
 }
 
-/* PREÇO TOTAL */
-.caixaPreco{
+.comprarProduto{
     display: flex;
-    color: black;
-    font-weight:400;
-    margin: 10px;
-    padding: 20px;
+    font-weight: 500;
+    color:#12B886;
+    background-color: rgba(18, 184, 134, 0.05);
+    border-color: rgba(18, 184, 134, 0.05);
+    padding: 5px;
     border-radius: 5px;
-    transition: ease-in-out .1s;
-    margin-left: 82px;
-    width: 88%;
-    box-shadow: 0px 4px 40px -15px rgba(0, 0, 0, 0.25);
-    justify-content: space-between;
-    height: 56px;
+    align-items: flex-start;
+    margin-left: 200px;
+    margin-top: -45px;
+    margin-bottom: 15px;
 }
-.caixaPreco:hover{
-    box-shadow: 3px 3px 13px 1px rgb(146 146 146);
+
+.comprarProduto:hover{
+    color: #f5f5f5;
+    background-color: #12B886;
+}
+
+.nameProduct, .price{
+    color: #212529;
+}
+.carrinhoVazio{
+    display: flex;
+    width: 275px;
+    height: 214px; 
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5f5;
+    color: #868E96;
+    font-weight: 100;
+    font-size: 10px;
+    overflow: auto;
+    padding: 15px 0 0 0;
+}
+.carrinhoVazio{
+    max-height: 1000px;
+}
+.tituloCarrinho{
+    display: flex;
+    background-color: #12B886;
+    color: #ffff;
+    width: 275px;
+    height: 40px;
+    margin-top: 30px;
+    margin-right: 40px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 8px 8px 0 0;
+}
+.bolsaCompras{
+    display: flex;
+    size-adjust: 5px;
+    justify-content: center;
+}
+
+.imgPrinc{
+    width: 80px;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-left: 5px;
+}
+
+.produtoPequeno{
+    display: flex;
+    flex-wrap: wrap;
+    width: 260px;
+    max-height: 90px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+.produtoPequeno:hover{
+    box-shadow: 2px 2px 4px 1px rgb(146 146 146);
+    border-radius: 8px;
+    padding: 7px;
+}
+
+.nameProduct, .secaoProduct, .price{
+    display:flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+}
+
+.remove{
+    display: flex;
+    border: none;
+    height: 20px;
+    background-color:#f5f5f5;
+}
+
+.quantidade{
+    display: flex;
+    width: 275px;
+    padding: 10px;
+    height: 50px;
+    background-color: #f5f5f5;
+    font-weight: 200;
+    justify-content: space-between;
 }
 
 .total{
     display: flex;
-    height: 35px;
-    background-color: black;
-    color: #f1f3f5;
-    padding: 6px;
-    margin: 10px;
-    margin-top: -10px;
-    border-radius: 8px;
+    justify-content: space-between;
+    font-weight: 200;
+    width: 275px;
+    padding: 10px;
+    height: 50px;
+    background-color: #f5f5f5;
 }
+
+@media screen and (min-width: 320px) and (max-width:760px){
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        margin: 0 auto;
+        height: 45px;
+    }
+    .filtersContainer{
+        display: flex;
+        max-width: 100%;
+        margin-top: 50px;
+        overflow: auto;
+        justify-content: space-between;
+    }
+    .estiloGeralBotoes{
+        display: inline-block;
+        flex-wrap: wrap;
+        height: 40px;
+        margin-left: 5px;
+    }
+    .estiloGeralBotoes--mostrarTodos{
+        display: block;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5px;
+        margin-left: -20px;
+    }
+
+    .containerBuscaPorNome{
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        margin-top: -42px;
+        margin-left: 8px;
+    }
+    .campoBuscaPorNome{
+        display: flex;
+        align-items: center;
+    }
+    .containerListaProdutos ul{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: auto;
+        height: 190px;
+        width: 480px;
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+    .containerListaProdutos ul li img{
+        height: 115px;
+        width: 190px;
+        padding: 10px;
+    }
+    .containerListaProdutos ul li ol{
+        margin-left: -500px;
+        height: 250px;
+    }
+    .containerListaProdutos ul li h3{
+        display: flex;
+        margin-top: -10px;
+        margin-left: 10px;
+    }
+    .containerListaProdutos ul li span{
+        display: flex;
+        margin-left: 25px;
+        margin-top: -5px;
+    }
+    .containerListaProdutos ul li p{
+        display: flex;
+        margin-top: -270px;
+        margin-left: 10px;
+    }
+
+    .comprarProduto{
+        display: flex;
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    .listaComponentes{
+        display: none;
+    }
+
+    .tituloCarrinho{
+        display: flex;
+        margin-bottom: -190px;
+        margin-top: 207px;
+        margin-left: -95%;
+        width: 300px;
+    }
+    .carrinhoVazio{
+        display: flex;
+        height: 100px;
+        width: 300px;
+        margin: 0 auto;
+        margin-left: -95%;
+        margin-bottom: -120px;
+        margin-top: 190px;
+    }
+    .quantidade{
+        display: flex;
+        width: 300px;
+        height: 20px;
+        margin-left: -95%;
+        margin-top: 110px;
+        margin-bottom: -120px;
+    }
+    .total{
+        display: flex;
+        width: 300px;
+        height: 30px;
+        margin-left: -95%;
+        margin-top: 120px;
+    }
+} 
+
+
