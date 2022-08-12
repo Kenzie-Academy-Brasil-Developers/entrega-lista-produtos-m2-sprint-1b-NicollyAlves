@@ -1,4 +1,3 @@
-//FUNÇÃO DOS BOTÕES
 const header = document.querySelector('header')
 const main = document.querySelector('main')
 function filtros(){
@@ -40,9 +39,6 @@ function filtros(){
    return filtersDiv
 }
 
-
-
-//FUNÇÃO PARA CRIAR O ESPAÇO DE PESQUISA
 function pesquisa(){
    const containerBusca = document.createElement('div')
    containerBusca.classList.add("containerBuscaPorNome")
@@ -70,7 +66,7 @@ function pesquisa(){
 }
 pesquisa()
 
-//CARRINHO CAIXA
+
 const caixaCarrinho = document.querySelector("section")
 function criarCarrinho(){
   const tituloCarrinho = document.createElement("p")
@@ -92,7 +88,7 @@ function criarCarrinho(){
 }
 criarCarrinho()
 
-//FUNÇÃO DA LISTA DE PRODUTOS
+
   const ul = document.querySelector('.lista');
 function criarProdutos (produto) {
   const li = document.createElement('li');
@@ -144,8 +140,6 @@ function listarProdutos(listaProdutos){
 }
 listarProdutos(data)
 
-//FILTROS DOS PRODUTOS
-
 function listarHortifruit(listaProdutos){
   const hortifruitFiltrados = filtrarPorHortifruit(listaProdutos, 'Hortifruit')
     for (let i=0; i<hortifruitFiltrados.length; i++){
@@ -194,8 +188,6 @@ function filtrarPorLaticinios(listaProdutos, secao){
   return laticiniosFiltrados
 }
 
-
-//FILTRO POR CLICK
 const buttonDiv = document.getElementById("filters") 
 buttonDiv.addEventListener("click", event =>{
   let selecionarLista = document.querySelector(".lista").innerHTML = ""
@@ -218,7 +210,6 @@ buttonDiv.addEventListener("click", event =>{
   }
 })
 
-//FILTRO DE PESQUISA
 function montarDados(listaProdutos){
   const listaCards = document.querySelector(".lista");
   listaCards.innerHTML = "";
@@ -250,9 +241,8 @@ function filtrarCards(event){
   })
   montarDados(listaFiltrada)
 }
-//ADICIONAR E REMOVER DO CARRINHO
-const carrinhoVazio = document.querySelector(".carrinhoVazio")
 
+const carrinhoVazio = document.querySelector(".carrinhoVazio")
 function emptyCart(){
   return carrinhoVazio.insertAdjacentHTML("beforeend",
   `
@@ -316,23 +306,19 @@ let spanDois = document.querySelector(".quant")
 let button = document.querySelector(".remove")
 let span = document.querySelector(".totalValor")
 let quantProduto = 0
-let precoProduto = 0
 
 
 const car = []
 addEventListener("click", event => {
-  //let preco = document.querySelector(".preco")
   const clique = event.target
   carrinhoVazio.innerHTML = ""
   if(clique.className === "comprarProduto"){
     car.push(data[clique.id -1])
     console.log(car);
     car.map((item)=> cardCarrinho(item))
+
     quantiSoma(data)
-    preco(data)
-    /*soma+=preco
-    let total = document.querySelector(".totalValor")
-    total.innerHTML = `R$${soma}.00`*/
+    precoAum(data)
   }
   
   if(clique.className ==="remove"){
@@ -342,31 +328,38 @@ addEventListener("click", event => {
     car.map(cardCarrinho)
     
     quantiSub(data)
+    precoDim(data)
   }
 })
 
-function quantiSoma(item){
-  //quantProduto+=item
+function quantiSoma(){
   let quant = document.querySelector(".quant")
   quant.innerText = car.length
-
 }
-function preco(){
-  for(let i = 0; i < car.length; i++){
-    let total = document.querySelector(".totalValor")
-
-    precoProduto+=car[i].preco
-    const soma = precoProduto
-    total.innerText = soma
-  }
-}
-
 function quantiSub(item){
   quantProduto-=item
   let quant = document.querySelector(".quant")
   quant.innerText = car.length
-  
-  //span.appendChild(total)
-
-  return
 }
+
+let total = document.querySelector(".totalValor")
+function precoAum(){
+  let precoProduto = 0
+  for(let i = 0; i < car.length; i++){
+    precoProduto+=car[i].preco
+    const soma = precoProduto
+    total.innerHTML = `R$ ${soma.toFixed(2)}`
+  }
+}
+function precoDim(){
+  let precoProduto = 0
+  for(let i = 0; i < car.length; i++){
+    precoProduto-=car[i].preco*(-1)
+    const soma = precoProduto
+    total.innerHTML = `R$ ${soma.toFixed(2)}`
+  }
+  if(car.length==0){
+    total.innerHTML = 0
+  }
+}
+
